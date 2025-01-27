@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    font-family: 'Roboto Mono', sans-serif;
+}
+
 html {
   font-size: $base-font-size;
 }
@@ -112,15 +118,10 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: $link-base-color;
+  color: #007fff;
   text-decoration: none;
 
-  &:visited {
-    color: $link-visited-color;
-  }
-
   &:hover {
-    color: $link-hover-color;
     text-decoration: underline;
   }
 
