@@ -21,6 +21,12 @@ permalink: /games/
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.game-card h3 {
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+}
+
 /* Game Image */
 .game-image {
   width: 100%;
@@ -49,6 +55,10 @@ permalink: /games/
   margin-bottom: 16px;
 }
 
+.game-description span {
+    color: #fff;
+}
+
 /* Play Button */
 .play-button {
   display: inline-block;
@@ -68,6 +78,24 @@ permalink: /games/
   text-decoration: none;
 }
 
+.coming-button {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color:rgb(37, 37, 37);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.coming-button:hover {
+  background-color: #fff;
+  color: rgb(37, 37, 37);
+  text-decoration: none;
+}
+
 </style>
 
 Dive into a world of fun and adventure! Here, you’ll find our collection of games that are perfect for challenging your skills, unlocking achievements, and just having a good time. Whether you're into puzzles, action, or strategy, there's something for everyone. Let the games begin!
@@ -77,11 +105,10 @@ Dive into a world of fun and adventure! Here, you’ll find our collection of ga
 <div class="game-card">
   <img src="https://placehold.co/300x200" alt="Game Thumbnail" class="game-image" />
   <div class="game-content">
-    <h3 class="game-title">Game Title</h3>
     <p class="game-description">
-      Short description of the game goes here. Get ready for an amazing adventure!
+      <span alt="First-Person Shooter">FPS</span>, <span alt="Team Deathmatch">Team Deathmatch</span>
     </p>
-    <a href="#" class="play-button">Download</a>
+    <a href="#" class="coming-button">Coming Soon</a>
   </div>
 </div>
 
