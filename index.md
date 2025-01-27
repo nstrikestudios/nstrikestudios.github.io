@@ -7,3 +7,13 @@
 #
 layout: home
 ---
+
+<style>
+    h1 {
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #fff;
+    }
+</style>
+
+<h1>All Posts</h1>

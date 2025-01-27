@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Games
-permalink: /games/
+title: Our Works
+permalink: /our-works/
 ---
 
 <style>
@@ -101,9 +101,10 @@ permalink: /games/
 Dive into a world of fun and adventure! Here, you’ll find our collection of games that are perfect for challenging your skills, unlocking achievements, and just having a good time. Whether you're into puzzles, action, or strategy, there's something for everyone. Let the games begin!
 
 <br>
-
+<h1>Our Games</h1>
 <div class="game-card">
-  <img src="https://placehold.co/300x200" alt="Game Thumbnail" class="game-image" />
+  <img src="/assets/images/nstrike-300x200.png" alt="Game Thumbnail" class="game-image" />
+  <h3>NStrike</h3>
   <div class="game-content">
     <p class="game-description">
       <span alt="First-Person Shooter">FPS</span>, <span alt="Team Deathmatch">Team Deathmatch</span>
