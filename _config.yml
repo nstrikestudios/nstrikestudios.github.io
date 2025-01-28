@@ -28,7 +28,7 @@ plugins:
 # in order as they should show up.
 header_pages:
   - about.md
-  - our-works.md
+  - games.md
 
 # Set to `true` to show excerpts on the homepage.
 #show_excerpts: false
@@ -54,7 +54,7 @@ minima:
   social_links:
     - { platform: facebook,       user_url: "https://www.facebook.com/nstrikestudios" }
     - { platform: instagram,      user_url: "https://www.instagram.com/nstrikestudios" }
-    - { platform: x,              user_url: "https://x.com/nstrikestudios" }
+    - { platform: twitter,              user_url: "https://x.com/nstrikestudios" }
     - { platform: youtube,        user_url: "https://www.youtube.com/@nstrikestudios" }
 
 

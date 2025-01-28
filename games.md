@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Our Works
-permalink: /our-works/
+title: Games
+permalink: /games/
 ---
 
 <style>
@@ -101,7 +101,6 @@ permalink: /our-works/
 Dive into a world of fun and adventure! Here, you’ll find our collection of games that are perfect for challenging your skills, unlocking achievements, and just having a good time. Whether you're into puzzles, action, or strategy, there's something for everyone. Let the games begin!
 
 <br>
-<h1>Our Games</h1>
 <div class="game-card">
   <img src="/assets/images/nstrike-300x200.png" alt="Game Thumbnail" class="game-image" />
   <h3>NStrike</h3>
