@@ -13,10 +13,36 @@ layout: base
     margin: 30px 0;
     font-size: 4em;
     letter-spacing: -1px;
+    color: #ff3131;
   }
+
+  button {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  background-color:rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 8px;
+  border-color: #000;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background-color:rgb(0, 0, 0);
+  text-decoration: none;
+}
+
 </style>
 
 <div class="container">
   <h1>Oops!</h1>
   <p>Something Went Wrong.</p>
+  <br>
+  <button onclick="window.history.back();">Back to previous page</button>
+  or
+  <button onclick="location.reload();">Reload this page</button>
 </div>
