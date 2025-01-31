@@ -33,18 +33,18 @@ permalink: /games/
   padding: 5px 10px;
   font-size: 15px;
   font-weight: bold;
-  color: #000;
-  background-color:rgb(255, 255, 255);
+  color: #fff;
+  background-color:rgb(20, 171, 0);
   text-decoration: none;
   border-radius: 8px;
-  border-color: #000;
+  border-color: rgb(20, 171, 0);
   transition: background-color 0.3s ease;
 }
 
 .game-card button:hover {
-  color: #fff;
-  border-color: #fff;
-  background-color:rgb(0, 0, 0);
+  color: rgb(20, 171, 0);
+  border-color: rgb(20, 171, 0);
+  background-color:rgb(255, 255, 255);
   text-decoration: none;
 }
 

@@ -52,9 +52,8 @@ minima:
 
   # Generate social links in footer.
   social_links:
-    - { platform: facebook,       user_url: "https://www.facebook.com/nstrikestudios" }
-    - { platform: instagram,      user_url: "https://www.instagram.com/nstrikestudios" }
-    - { platform: twitter,              user_url: "https://x.com/nstrikestudios" }
     - { platform: youtube,        user_url: "https://www.youtube.com/@nstrikestudios" }
+    - { platform: facebook,       user_url: "https://www.facebook.com/profile.php?id=61572327010333" }
+    - { platform: instagram,      user_url: "https://www.instagram.com/nstrikestudios" }
 
 
