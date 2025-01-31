@@ -7,4 +7,4 @@
 #
 layout: home
 ---
-<h1>All Posts</h1>
+<h1 style="color: #fff; font-weight: 700;">All Posts</h1>
