@@ -38,12 +38,12 @@ permalink: /games/
   text-decoration: none;
   border-radius: 8px;
   border-color: rgb(20, 171, 0);
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
 .game-card button:hover {
   color: rgb(20, 171, 0);
-  border-color: rgb(20, 171, 0);
+  border-color: rgb(255, 255, 255);
   background-color:rgb(255, 255, 255);
   text-decoration: none;
 }
@@ -62,8 +62,8 @@ Dive into a world of fun and adventure! Here, you’ll find our collection of ga
             <img src="/assets/images/nstrike-300x200.png" alt="NStrike">
             <h3>NStrike</h3>
             <p><span>FPS</span>, <span>Team Deathmatch</span></p>
-            <a href="/nstrike" target="_blank">
-            <button>Learn More</button>
+            <a href="/404">
+            <button>Coming Soon</button>
             </a>
         </div>
  </article>
