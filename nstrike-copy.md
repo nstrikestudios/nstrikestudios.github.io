@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Download NStrike
-permalink: /nstrike/
+permalink: /nstrike-copy/
 ---
 <style>
     .download {

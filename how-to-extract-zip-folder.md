@@ -1,7 +1,7 @@
 ---
 layout: page
 title: How to Extract .zip Folder
-permalink: /howtoextract/
+permalink: /how-to-extract-zip-folder/
 ---
 ## For MacOS
 - Locate the ZIP file in Finder.
