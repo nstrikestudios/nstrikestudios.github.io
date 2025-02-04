@@ -21,17 +21,22 @@ permalink: /nstrike/
   text-decoration: none;
   border-radius: 8px;
   border-color: #fff;
+  border-width: 5px;
   transition: 0.3s;
 }
 
+button:hover {
+  border-color: rgb(0, 169, 8);
+
+}
 </style>
 
 <br>
 
 <div class="download">
-<a href="/nstrike.txt"><button><img src="/assets/images/download/windows.png"></button></a>
-<a href="/nstrike.txt"><button><img src="/assets/images/download/macos.png"></button></a>
-<a href="/nstrike.txt"><button><img src="/assets/images/download/ios.png"></button></a>
-<a href="/nstrike.txt"><button><img src="/assets/images/download/android.png"></button></a>
+<a href="/404"><button><img src="/assets/images/download/windows.png"></button></a>
+<a href="/404"><button><img src="/assets/images/download/macos.png"></button></a>
+<a href="/404"><button><img src="/assets/images/download/ios.png"></button></a>
+<a href="/404"><button><img src="/assets/images/download/android.png"></button></a>
 
 </div>
