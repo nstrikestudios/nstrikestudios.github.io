@@ -114,6 +114,7 @@ button {
 button:hover {
     color: #000;
     background-color: #ffa200;
+    cursor: pointer;
 }
 
 footer {
