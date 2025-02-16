@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadComponent("featured-games.html", "games");
     loadComponent("hiring.html", "hiring");
     loadComponent("contact.html", "contact");
+    loadComponent("discord.html", "discord");
 });
 
 function loadComponent(file, elementId) {
