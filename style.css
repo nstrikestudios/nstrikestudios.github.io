@@ -226,7 +226,7 @@ textarea {
     color: #767676; /* Change icon color on hover */
 }
 
-#hiring-section {
+#hiring-section, #dis {
     display: flex;
     align-items: center;
     justify-content: center;
