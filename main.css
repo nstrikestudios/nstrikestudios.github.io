@@ -149,8 +149,12 @@ button {
 
 button:hover {
     background-color: #fff; 
-  color: #000; 
-  border: 3px solid #000;
+    color: #000; 
+    border: 3px solid #000;
+}
+
+.view-button {
+    width: 100%;
 }
 
 .herooverlay {
