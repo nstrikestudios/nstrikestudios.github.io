@@ -40,7 +40,7 @@ body {
     transition: 0.3s;
 }
 .overlay a:hover {
-    color: #aa00ff;
+    color: #5F5F5F;
     font-size: 40px;
 }
 .closebtn {
@@ -63,7 +63,7 @@ body {
 }
 
 .menu-btn:hover, .closebtn:hover {
-    color: #aa00ff;
+    color: #5F5F5F;
 }
 
 nav {
