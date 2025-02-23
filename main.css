@@ -318,10 +318,10 @@ input, textarea {
     border: 1px solid #ccc;
     background-color: #fff;
     color: #000;
+    border-radius: 0px;
 }
 
 textarea {
-    resize: vertical;
     min-height: 100px;
     resize: none;
 }
