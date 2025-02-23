@@ -159,6 +159,11 @@ button:hover {
     border-color: #01854b;
 }
 
+.view-button:hover {
+    color: #01854b;
+    border-color: #01854b;
+}
+
 .herooverlay {
     padding: 50px;
 }
