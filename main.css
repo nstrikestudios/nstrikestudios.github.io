@@ -155,6 +155,8 @@ button:hover {
 
 .view-button {
     width: 100%;
+    background-color: #01854b;
+    border-color: #01854b;
 }
 
 .herooverlay {
