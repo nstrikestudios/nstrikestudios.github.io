@@ -8,40 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             line-height: 1.6;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 1rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #ddd;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
         }
 
         .thread {
@@ -85,42 +53,16 @@
         .delete-btn:hover {
             background-color: #c9302c;
         }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            margin-top: 1rem;
-        }
     </style>
 </head>
 <body>
-    <main>
-        <section id="threads">
-            <h2>กระทู้ล่าสุด</h2>
-            <button onclick="addThread()">สร้างกระทู้ใหม่</button>
-            <button onclick="exportData()">ส่งออกข้อมูล</button>
-            <button onclick="importData()">นำเข้าข้อมูล</button>
-            <br>
-            <div class="forum-container" id="forumContainer">
-                <!-- กระทู้จะถูกเพิ่มด้วย JavaScript -->
-            </div>
-            
-            <textarea id="dataBox" placeholder="วางข้อมูล JSON ที่นี่เพื่อนำเข้า"></textarea>
-        </section>
-    </main>
+    <h2>กระทู้ล่าสุด <button onclick="addThread()">สร้างกระทู้ใหม่</button></h2>
+    <div class="forum-container" id="forumContainer">
+        <!-- กระทู้จะถูกเพิ่มด้วย JavaScript -->
+    </div>
     <script>
-        // โหลดกระทู้จาก localStorage หรือใช้ค่าเริ่มต้นถ้ายังไม่มี
-        let threads = JSON.parse(localStorage.getItem('forumThreads')) || [
+        // ตัวแปรเก็บกระทู้ (ข้อมูลจะหายเมื่อรีเฟรช)
+        let threads = [
             {
                 id: Date.now(),
                 title: "กระทู้แรกของฉัน",
@@ -178,7 +120,6 @@
                     comments: []
                 };
                 threads.push(newThread);
-                localStorage.setItem('forumThreads', JSON.stringify(threads));
                 loadThreads();
             } else {
                 alert("กรุณากรอกหัวข้อ เนื้อหา และชื่อผู้โพสต์ให้ครบ!");
@@ -197,7 +138,6 @@
                         content: content,
                         date: new Date().toLocaleString('th-TH')
                     });
-                    localStorage.setItem('forumThreads', JSON.stringify(threads));
                     loadThreads();
                 }
             } else {
@@ -208,31 +148,7 @@
         function deleteThread(index) {
             if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบกระทู้นี้?")) {
                 threads.splice(index, 1);
-                localStorage.setItem('forumThreads', JSON.stringify(threads));
                 loadThreads();
-            }
-        }
-
-        function exportData() {
-            const data = JSON.stringify(threads, null, 2);
-            document.getElementById("dataBox").value = data;
-            alert("ข้อมูลถูกส่งออกแล้ว คัดลอกจากกล่องข้อความเพื่อแชร์!");
-        }
-
-        function importData() {
-            const dataBox = document.getElementById("dataBox").value;
-            if (dataBox) {
-                try {
-                    const importedThreads = JSON.parse(dataBox);
-                    threads = importedThreads;
-                    localStorage.setItem('forumThreads', JSON.stringify(threads));
-                    loadThreads();
-                    alert("นำเข้าข้อมูลสำเร็จ!");
-                } catch (e) {
-                    alert("ข้อมูลไม่ถูกต้อง กรุณาตรวจสอบ JSON!");
-                }
-            } else {
-                alert("กรุณาวางข้อมูล JSON ในกล่องข้อความก่อน!");
             }
         }
     </script>
