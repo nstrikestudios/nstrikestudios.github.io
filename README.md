@@ -1,1 +1,1 @@
-# nstrikestudios.github.io
+# NStrike Studios
