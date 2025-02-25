@@ -104,17 +104,6 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>ยินดีต้อนรับสู่ฟอรัมของฉัน</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">หน้าแรก</a></li>
-                <li><a href="#about">เกี่ยวกับ</a></li>
-                <li><a href="#threads">กระทู้</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <section id="threads">
             <h2>กระทู้ล่าสุด</h2>
@@ -129,11 +118,6 @@
             <textarea id="dataBox" placeholder="วางข้อมูล JSON ที่นี่เพื่อนำเข้า"></textarea>
         </section>
     </main>
-
-    <footer>
-        <p>© 2025 ฟอรัมของฉัน. สงวนลิขสิทธิ์.</p>
-    </footer>
-
     <script>
         // โหลดกระทู้จาก localStorage หรือใช้ค่าเริ่มต้นถ้ายังไม่มี
         let threads = JSON.parse(localStorage.getItem('forumThreads')) || [
