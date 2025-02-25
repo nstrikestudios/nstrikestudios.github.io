@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ฟอรัมของฉัน</title>
     <style>
-        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
-
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
         }
 
         nav ul {
@@ -82,48 +86,59 @@
             background-color: #c9302c;
         }
 
-        header, footer {
+        footer {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 1rem;
+            position: fixed;
             bottom: 0;
+            width: 100%;
         }
 
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>NStrike Forum</h1>
+        <h1>ยินดีต้อนรับสู่ฟอรัมของฉัน</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับ</a></li>
+                <li><a href="#threads">กระทู้</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section id="threads">
-            <h2>Latest Threads <button onclick="addThread()">New Thread</button></h2>
+            <h2>กระทู้ล่าสุด</h2>
+            <button onclick="addThread()">สร้างกระทู้ใหม่</button>
+            <button onclick="exportData()">ส่งออกข้อมูล</button>
+            <button onclick="importData()">นำเข้าข้อมูล</button>
+            <br>
             <div class="forum-container" id="forumContainer">
                 <!-- กระทู้จะถูกเพิ่มด้วย JavaScript -->
             </div>
             
+            <textarea id="dataBox" placeholder="วางข้อมูล JSON ที่นี่เพื่อนำเข้า"></textarea>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 <a href="/">NStrike Studios</a></p>
+        <p>© 2025 ฟอรัมของฉัน. สงวนลิขสิทธิ์.</p>
     </footer>
 
     <script>
         // โหลดกระทู้จาก localStorage หรือใช้ค่าเริ่มต้นถ้ายังไม่มี
         let threads = JSON.parse(localStorage.getItem('forumThreads')) || [
             {
-                id: Date.now(), // ใช้ timestamp เป็น ID
+                id: Date.now(),
                 title: "กระทู้แรกของฉัน",
                 content: "นี่คือกระทู้แรกในฟอรัม ยินดีต้อนรับทุกคน!",
                 author: "แอดมิน",
@@ -148,14 +163,14 @@
                 threadElement.classList.add("thread");
                 threadElement.innerHTML = `
                     <h3>${thread.title}</h3>
-                    <div class="thread-meta">Posted by <i class="fab fa-facebook"></i> ${thread.author} | Posted on ${thread.date} GMT+7</div>
+                    <div class="thread-meta">โดย ${thread.author} | โพสต์เมื่อ ${thread.date}</div>
                     <p>${thread.content}</p>
-                    <button onclick="addComment(${thread.id})">Comment</button>
-                    <button class="delete-btn" onclick="deleteThread(${index})">Delete Thread</button>
+                    <button onclick="addComment(${thread.id})">แสดงความคิดเห็น</button>
+                    <button class="delete-btn" onclick="deleteThread(${index})">ลบกระทู้</button>
                     <div class="comments">
                         ${thread.comments.map(comment => `
                             <div class="comment">
-                                <strong><i class="fab fa-facebook"></i> ${comment.author}</strong> (${comment.date} GMT+7): ${comment.content}
+                                <strong>${comment.author}</strong> (${comment.date}): ${comment.content}
                             </div>
                         `).join('')}
                     </div>
@@ -165,9 +180,9 @@
         }
 
         function addThread() {
-            const title = prompt("Post Title:");
-            const content = prompt("Post Content:");
-            const author = prompt("Facebook Author Name:");
+            const title = prompt("กรุณาใส่หัวข้อกระทู้:");
+            const content = prompt("กรุณาใส่เนื้อหากระทู้:");
+            const author = prompt("กรุณาใส่ชื่อผู้โพสต์:");
 
             if (title && content && author) {
                 const newThread = {
@@ -182,13 +197,13 @@
                 localStorage.setItem('forumThreads', JSON.stringify(threads));
                 loadThreads();
             } else {
-                alert("Oops!");
+                alert("กรุณากรอกหัวข้อ เนื้อหา และชื่อผู้โพสต์ให้ครบ!");
             }
         }
 
         function addComment(threadId) {
-            const author = prompt("Your Facebook Name:");
-            const content = prompt("Your Comment:");
+            const author = prompt("กรุณาใส่ชื่อผู้แสดงความคิดเห็น:");
+            const content = prompt("กรุณาใส่ความคิดเห็น:");
 
             if (author && content) {
                 const thread = threads.find(t => t.id === threadId);
@@ -202,15 +217,38 @@
                     loadThreads();
                 }
             } else {
-                alert("Oops!");
+                alert("กรุณากรอกชื่อและความคิดเห็นให้ครบ!");
             }
         }
 
         function deleteThread(index) {
-            if (confirm("Are You Sure?")) {
+            if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบกระทู้นี้?")) {
                 threads.splice(index, 1);
                 localStorage.setItem('forumThreads', JSON.stringify(threads));
                 loadThreads();
+            }
+        }
+
+        function exportData() {
+            const data = JSON.stringify(threads, null, 2);
+            document.getElementById("dataBox").value = data;
+            alert("ข้อมูลถูกส่งออกแล้ว คัดลอกจากกล่องข้อความเพื่อแชร์!");
+        }
+
+        function importData() {
+            const dataBox = document.getElementById("dataBox").value;
+            if (dataBox) {
+                try {
+                    const importedThreads = JSON.parse(dataBox);
+                    threads = importedThreads;
+                    localStorage.setItem('forumThreads', JSON.stringify(threads));
+                    loadThreads();
+                    alert("นำเข้าข้อมูลสำเร็จ!");
+                } catch (e) {
+                    alert("ข้อมูลไม่ถูกต้อง กรุณาตรวจสอบ JSON!");
+                }
+            } else {
+                alert("กรุณาวางข้อมูล JSON ในกล่องข้อความก่อน!");
             }
         }
     </script>
