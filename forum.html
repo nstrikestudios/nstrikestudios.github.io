@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฟอรัมของฉัน</title>
+    <style>
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .thread {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .thread-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment {
+            margin-left: 2rem;
+            padding: 0.5rem;
+            border-left: 2px solid #ddd;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .delete-btn {
+            background-color: #d9534f;
+        }
+
+        .delete-btn:hover {
+            background-color: #c9302c;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            bottom: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NStrike Forum</h1>
+    </header>
+
+    <main>
+        <section id="threads">
+            <h2>Latest Threads <button onclick="addThread()">New Thread</button></h2>
+            <div class="forum-container" id="forumContainer">
+                <!-- กระทู้จะถูกเพิ่มด้วย JavaScript -->
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 <a href="/">NStrike Studios</a></p>
+    </footer>
+
+    <script>
+        // โหลดกระทู้จาก localStorage หรือใช้ค่าเริ่มต้นถ้ายังไม่มี
+        let threads = JSON.parse(localStorage.getItem('forumThreads')) || [
+            {
+                id: Date.now(), // ใช้ timestamp เป็น ID
+                title: "กระทู้แรกของฉัน",
+                content: "นี่คือกระทู้แรกในฟอรัม ยินดีต้อนรับทุกคน!",
+                author: "แอดมิน",
+                date: new Date().toLocaleString('th-TH'),
+                comments: [
+                    { author: "ผู้เยี่ยมชม", content: "ยินดีด้วยกับกระทู้แรก!", date: new Date().toLocaleString('th-TH') }
+                ]
+            }
+        ];
+
+        // โหลดกระทู้เมื่อหน้าเว็บเริ่มทำงาน
+        document.addEventListener("DOMContentLoaded", () => {
+            loadThreads();
+        });
+
+        function loadThreads() {
+            const container = document.getElementById("forumContainer");
+            container.innerHTML = ""; // ล้างเนื้อหาก่อนหน้า
+
+            threads.forEach((thread, index) => {
+                const threadElement = document.createElement("div");
+                threadElement.classList.add("thread");
+                threadElement.innerHTML = `
+                    <h3>${thread.title}</h3>
+                    <div class="thread-meta">Posted by <i class="fab fa-facebook"></i> ${thread.author} | Posted on ${thread.date} GMT+7</div>
+                    <p>${thread.content}</p>
+                    <button onclick="addComment(${thread.id})">Comment</button>
+                    <button class="delete-btn" onclick="deleteThread(${index})">Delete Thread</button>
+                    <div class="comments">
+                        ${thread.comments.map(comment => `
+                            <div class="comment">
+                                <strong><i class="fab fa-facebook"></i> ${comment.author}</strong> (${comment.date} GMT+7): ${comment.content}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(threadElement);
+            });
+        }
+
+        function addThread() {
+            const title = prompt("Post Title:");
+            const content = prompt("Post Content:");
+            const author = prompt("Facebook Author Name:");
+
+            if (title && content && author) {
+                const newThread = {
+                    id: Date.now(),
+                    title: title,
+                    content: content,
+                    author: author,
+                    date: new Date().toLocaleString('th-TH'),
+                    comments: []
+                };
+                threads.push(newThread);
+                localStorage.setItem('forumThreads', JSON.stringify(threads));
+                loadThreads();
+            } else {
+                alert("Oops!");
+            }
+        }
+
+        function addComment(threadId) {
+            const author = prompt("Your Facebook Name:");
+            const content = prompt("Your Comment:");
+
+            if (author && content) {
+                const thread = threads.find(t => t.id === threadId);
+                if (thread) {
+                    thread.comments.push({
+                        author: author,
+                        content: content,
+                        date: new Date().toLocaleString('th-TH')
+                    });
+                    localStorage.setItem('forumThreads', JSON.stringify(threads));
+                    loadThreads();
+                }
+            } else {
+                alert("Oops!");
+            }
+        }
+
+        function deleteThread(index) {
+            if (confirm("Are You Sure?")) {
+                threads.splice(index, 1);
+                localStorage.setItem('forumThreads', JSON.stringify(threads));
+                loadThreads();
+            }
+        }
+    </script>
+</body>
+</html>
